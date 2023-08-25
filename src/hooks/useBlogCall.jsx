@@ -62,7 +62,7 @@ const useBlogCall = () => {
         );
         dispatch(postNewBlogSuccess(data));
       
-        // console.log(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
         dispatch(fetchFail()); 

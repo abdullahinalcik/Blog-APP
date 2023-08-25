@@ -25,7 +25,7 @@ import { useEffect } from "react";
 const defaultTheme = createTheme();
 
 const NewBlog = () => {
-  const { getCategory } = useBlogCall();
+  const { postNewBlog, getCategory } = useBlogCall();
 
   useEffect(()=>{
     getCategory()
@@ -76,7 +76,7 @@ const NewBlog = () => {
                 //TODO register(values)
                 
 
-                getCategory({ ...values});
+                postNewBlog({ ...values});
 
 
 
