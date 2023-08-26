@@ -7,6 +7,7 @@ const blogSlice = createSlice({
     error: false,
     blog:[],
     category:[],
+    newBlog:[]
   },
   reducers: {
     fetchStart: (state) => {
@@ -26,6 +27,7 @@ const blogSlice = createSlice({
 
     postNewBlogSuccess:(state, { payload }) => {
       state.loading = false;
+      state.newBlog= payload
       
 
     },

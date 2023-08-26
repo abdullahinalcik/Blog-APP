@@ -29,7 +29,7 @@ const NewBlogForm = ({
 
 const{category}=useSelector((state)=>state.blog)
 
-console.log(category);
+// console.log(category);
 
   return (
     <Form>
@@ -77,7 +77,7 @@ console.log(category);
             //   sx={{ width: "100%" }}
             >
               {category?.map(({ id, name }) => (
-                  <MenuItem key={id} value={id}>
+                  <MenuItem key={id} value={name}>
                     {name}
                   </MenuItem>
                 ))}
@@ -151,7 +151,7 @@ console.log(category);
         </Grid>
       </Grid>
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-        Register
+        Add New Blog
       </Button>
     </Form>
   );

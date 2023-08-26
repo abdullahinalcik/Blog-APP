@@ -53,19 +53,20 @@ const useBlogCall = () => {
     }
   }
 
-    const postNewBlog = async () => {
+    const postNewBlog = async (newBlogData) => {
       dispatch(fetchStart());
       try {
-        const { data } = await axios(
-          `${import.meta.env.VITE_BASE_URL}/api/blogs/`
-        
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_BASE_URL}/api/blogs/`,newBlogData      
         );
         dispatch(postNewBlogSuccess(data));
-      
+        getCategory()
+        toastSuccessNotify("New blog added")
         console.log(data);
       } catch (error) {
         console.log(error);
         dispatch(fetchFail()); 
+        toastWarnNotify("New blog can not added")
       }
   }
 
