@@ -9,7 +9,7 @@ export const Footer = () => {
       bottom="0"
       sx={{
         width: "100%",
-        // height: "auto",
+        height: "50px",
         backgroundColor: " #1976D2",
         paddingTop: ".5rem",
         paddingBottom: ".5rem",

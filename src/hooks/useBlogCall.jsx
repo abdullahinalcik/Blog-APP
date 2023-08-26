@@ -10,12 +10,15 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { fetchFail,fetchStart,getCategorySuccess,getBlogSuccess,postNewBlogSuccess } from "../features/blogSlice";
+import { string } from "yup";
 
 
 const useBlogCall = () => {
 
-
+ const {token}=useSelector((state)=>state.auth)
   const dispatch = useDispatch();
+ 
+
 
   const getBlogList = async () => {
     dispatch(fetchStart()); 
@@ -54,15 +57,30 @@ const useBlogCall = () => {
   }
 
     const postNewBlog = async (newBlogData) => {
+      console.log(newBlogData);
       dispatch(fetchStart());
-      try {
-        const { data } = await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/api/blogs/`,newBlogData      
+      try{ 
+        console.log(typeof token);
+
+        // const { data } = await axios.post(
+        //   `${import.meta.env.VITE_BASE_URL}/api/blogs/`,newBlogData, {
+        //     headers: { Authorization: `Token ${token}` },
+        //   }      
+        // );
+         await axios.post(
+          `${import.meta.env.VITE_BASE_URL}/api/blogs/`,
+            newBlogData,    
+          // {
+          //   headers: { Authorization: `Token e251da2862347ad5c5b3c47ea984c21e3d5472ac` }
+          // }
+          {
+            headers: { Authorization: `Token ${token}` }
+          }
         );
-        dispatch(postNewBlogSuccess(data));
-        getCategory()
+        // dispatch(postNewBlogSuccess(data));
+        getBlogList()
         toastSuccessNotify("New blog added")
-        console.log(data);
+        // console.log(data);
       } catch (error) {
         console.log(error);
         dispatch(fetchFail()); 
@@ -70,8 +88,56 @@ const useBlogCall = () => {
       }
   }
 
+  const postLike=async (id)=>{
+    dispatch(fetchStart());
+            //  console.log(id);
+    try{ 
 
-  return {getBlogList,getCategory,postNewBlog}
+
+          await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/likes/${id}/`,id,      
+        {
+          headers: { Authorization: `Token ${token}` }
+        }
+      );  
+      getBlogList()
+      // toastSuccessNotify("like")
+
+    } catch (error) {
+
+      dispatch(fetchFail()); 
+      // toastWarnNotify("notlike")
+    }
+
+  }
+
+
+
+  const postComments=async (id)=>{
+    dispatch(fetchStart());
+            //  console.log(id);
+    try{ 
+
+
+          await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/comments/${id}/`,id,      
+        {
+          headers: { Authorization: `Token ${token}` }
+        }
+      );  
+      getBlogList()
+      // toastSuccessNotify("like")
+
+    } catch (error) {
+
+      dispatch(fetchFail()); 
+      // toastWarnNotify("notlike")
+    }
+
+  }
+
+
+  return {getBlogList,getCategory,postNewBlog,postLike,postComments}
 }
 
 export default useBlogCall

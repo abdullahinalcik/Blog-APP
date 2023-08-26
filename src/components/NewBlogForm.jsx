@@ -44,7 +44,7 @@ const{category}=useSelector((state)=>state.blog)
             autoFocus
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.username}
+            value={values.title}
           />
         </Grid>
 
@@ -77,7 +77,7 @@ const{category}=useSelector((state)=>state.blog)
             //   sx={{ width: "100%" }}
             >
               {category?.map(({ id, name }) => (
-                  <MenuItem key={id} value={name}>
+                  <MenuItem key={id} value={id}>
                     {name}
                   </MenuItem>
                 ))}
@@ -144,7 +144,7 @@ const{category}=useSelector((state)=>state.blog)
             name="content"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.bio}
+            value={values.content}
             multiline // Çok satırlı giriş alanını etkinleştirir
             rows={4} // Satır sayısını belirler
           />

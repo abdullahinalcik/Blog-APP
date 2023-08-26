@@ -68,15 +68,15 @@ const NewBlog = () => {
                 image: "",
                 category: "",
                 status: "",
-                slug: "",
-                id:""
+                // slug: "",
+                // id:""
               }}
               // validationSchema={}
               onSubmit={(values, actions) => {
                 //TODO register(values)
                 
 
-                postNewBlog({ ...values});
+                postNewBlog({...values});
 
 
 

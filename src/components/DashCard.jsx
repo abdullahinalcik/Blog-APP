@@ -21,6 +21,9 @@ import { btnStyle } from '../style/globalStyle';
 
 import { makeStyles } from "@mui/styles";
 import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import useBlogCall from "../hooks/useBlogCall";
+import { useNavigate } from "react-router-dom";
 // import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +37,14 @@ const useStyles = makeStyles((theme) => ({
 
 
 const DashCard=({blog})=> {
+  const {postLike}=useBlogCall()
+
+  const navigate=useNavigate()
+
+  // const handleClick=(id)=>{
+  //         postLike(id)
+  //         console.log(id)
+  // }
 
   const classes = useStyles()
  
@@ -85,7 +96,7 @@ const DashCard=({blog})=> {
       <CardOverflow>
         
         <Typography variant="h1" fontWeight="xl" align='center' color={"secondary.dark"} gutterBottom >
-          {blog.title}
+          {blog?.title}
           </Typography>
 
         <AspectRatio 
@@ -118,8 +129,8 @@ const DashCard=({blog})=> {
         sx={{ alignItems: "center", mx: -1 }}
       >
         <Box sx={{ width: 0, display: "flex", gap: 1.5 }}>
-          <IconButton variant="plain" color="neutral" size="sm">
-            <FavoriteBorder sx={btnStyle}/> 
+          <IconButton variant="plain" color="neutral" size="sm" onClick={()=>postLike(blog?.id)}>
+            <FavoriteBorder sx={btnStyle} /> 
             <Typography>
             {blog?.likes}
             </Typography>
@@ -151,6 +162,7 @@ const DashCard=({blog})=> {
         </Typography>
         <Button
           // component="button"
+          onClick={()=>navigate(`/detail/${blog?.id}/`)}
           underline="none"
           fontSize="sm"
           color="primary"
@@ -158,7 +170,7 @@ const DashCard=({blog})=> {
           startDecorator="…"
           sx={{ color: "text.tertiary" }}
         >
-          more
+          MORE
         </Button>
         <Link
           component="button"

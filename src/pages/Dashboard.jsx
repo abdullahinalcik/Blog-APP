@@ -18,8 +18,8 @@ useEffect(() => {
 
 const {blog}=useSelector((state)=>state.blog)
 
-console.log(blog);
-console.log(blog.data);
+// console.log(blog);
+// console.log(blog.data);
 // console.log(blog.data[0].title);
 // console.log(blog.data[1].title);
 // console.log(blog.data[2].title);
