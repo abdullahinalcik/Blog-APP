@@ -56,7 +56,7 @@ function Navbar() {
     // toastSuccessNotify("Logout succes")
     logout()
     setCurrentUser(false)
-    console.log();
+    // console.log();
   }
 
   const handleCloseUserMenu = () => {
@@ -178,8 +178,8 @@ function Navbar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="A" src="" />
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}   >
+                <Avatar alt={currentUser} src={currentUser} sx={{backgroundColor:"tomato"}}/>
               </IconButton>
             </Tooltip>
             <Menu
