@@ -26,10 +26,7 @@ const useBlogCall = () => {
     try {
       const { data } = await axios(
         `${import.meta.env.VITE_BASE_URL}/api/blogs/`
-        // ,
-        // {
-        //   headers: { Authorization: `Token ${token}` },
-        // }
+     
       );
       
       dispatch(getBlogSuccess({ data}));

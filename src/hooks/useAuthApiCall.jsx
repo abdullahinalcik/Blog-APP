@@ -29,7 +29,7 @@ const login=async(userData)=>{
         const {data}=await axios.post(`${import.meta.env.VITE_BASE_URL}/users/auth/login/`,userData)
         dispatch(loginSuccess(data))
         toastSuccessNotify("Login Succes")
-        navigate("/newblog")
+        navigate("/")
         console.log(userData);
     } catch (error) {
         dispatch(fetchFail())
@@ -60,7 +60,7 @@ const register=async(userData)=>{
       );
       dispatch(logoutSuccess());
       toastSuccessNotify("Logout succes");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.log(error);
       dispatch(fetchFail());
