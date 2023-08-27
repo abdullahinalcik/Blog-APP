@@ -7,11 +7,26 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { Button, Grid, TextField } from '@mui/material';
+import useBlogCall from '../hooks/useBlogCall';
+import { useState } from 'react';
 
 const CommentList=({blog})=> {
+  const {postComments}=useBlogCall()
+  const [addComment,setAddComment]=useState({
+    "content":"","post":1
+  })
+  // const [content,setContent]=useState()
+  const handleChange=(e)=>{
+    // setContent(e.target.value)
+    setAddComment({...addComment,content:e.target.value})
+   
+  }
 
+  console.log(addComment);
 // console.log(blog.blog.comments);
+console.log(blog.blog.id);
 const comments=blog.blog.comments
+
 console.log(comments);
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -58,9 +73,7 @@ console.log(comments);
             id="comment"
             label="Comments"
             name="comment"
-            // onChange={handleChange}
-            // onBlur={handleBlur}
-            // value={values.content}
+            onChange={handleChange}
             multiline 
             rows={4} 
           />
@@ -68,7 +81,10 @@ console.log(comments);
         <Button
          variant="contained"
          sx={{marginTop:1}}
-        //  onClick={}
+         onClick={()=>{
+          postComments(blog.blog.id,addComment)
+          
+         }}
          >ADD COMMENT</Button>
 
     </List>

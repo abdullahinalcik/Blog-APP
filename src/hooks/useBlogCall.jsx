@@ -57,10 +57,10 @@ const useBlogCall = () => {
   }
 
     const postNewBlog = async (newBlogData) => {
-      console.log(newBlogData);
+      // console.log(newBlogData);
       dispatch(fetchStart());
       try{ 
-        console.log(typeof token);
+        // console.log(typeof token);
 
         // const { data } = await axios.post(
         //   `${import.meta.env.VITE_BASE_URL}/api/blogs/`,newBlogData, {
@@ -113,25 +113,27 @@ const useBlogCall = () => {
 
 
 
-  const postComments=async (id)=>{
+  const postComments=async (id,addComment)=>{
     dispatch(fetchStart());
             //  console.log(id);
     try{ 
 
+      console.log(addComment);
 
           await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/comments/${id}/`,id,      
+        `${import.meta.env.VITE_BASE_URL}/api/comments/${id}/`,addComment,      
         {
           headers: { Authorization: `Token ${token}` }
         }
       );  
+
       getBlogList()
-      // toastSuccessNotify("like")
+      toastSuccessNotify("Comment is added")
 
     } catch (error) {
 
       dispatch(fetchFail()); 
-      // toastWarnNotify("notlike")
+      toastWarnNotify("Comment  can not  added")
     }
 
   }
