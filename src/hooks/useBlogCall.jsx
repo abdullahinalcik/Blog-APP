@@ -85,6 +85,101 @@ const useBlogCall = () => {
       }
   }
 
+
+
+
+
+
+
+
+
+  const updateNewBlog = async (id,updateBlogData) => {
+
+    dispatch(fetchStart());
+    try{ 
+  console.log(id)
+  console.log(updateBlogData)
+       await axios.put(
+        `${import.meta.env.VITE_BASE_URL}/api/blogs/${id}/`,
+          updateBlogData,  
+
+        {
+          headers: { Authorization: `Token ${token}` }
+        }
+      );
+      // dispatch(postNewBlogSuccess(data));
+      getBlogList()
+      toastSuccessNotify("The blog is updated sucessfuly")
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail()); 
+      toastWarnNotify("The blog can not be updated")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const deleteBlog= async (id)=>{
+    dispatch(fetchStart());
+      try{ 
+  // console.log(myBlog.id);
+         await axios.delete(
+          `${import.meta.env.VITE_BASE_URL}/api/blogs/${id}/`,
+              
+              {
+            headers: { Authorization: `Token ${token}` }
+          }
+        );
+        getBlogList()
+        toastSuccessNotify("The blog deleted")
+
+      } catch (error) {
+        console.log(error);
+        dispatch(fetchFail()); 
+        toastWarnNotify("The blog can not deleted")
+      }
+    }
+  
+
+
+
+
+
+
   const postLike=async (id)=>{
     dispatch(fetchStart());
             //  console.log(id);
@@ -136,7 +231,7 @@ const useBlogCall = () => {
   }
 
 
-  return {getBlogList,getCategory,postNewBlog,postLike,postComments}
+  return {getBlogList,getCategory,postNewBlog,postLike,postComments,deleteBlog,updateNewBlog}
 }
 
 export default useBlogCall

@@ -10,7 +10,7 @@ import Register from "../pages/Register";
 
 import PrivateRouter from "./PrivateRouter";
 import Detail from "../pages/Detail";
-import Myblogs from "../pages/Myblogs";
+import MyBlogs from "../pages/MyBlogs";
 
 const AppRouter = () => {
   return (
@@ -23,7 +23,7 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />        
         <Route path="/profile"  element={<Profile />}/>        
-        <Route path="/myblogs" element={<Myblogs />}/>
+        <Route path="/myblogs" element={<MyBlogs />}/>
 
         <Route  element={<PrivateRouter />}>
           <Route  path="/newblog" element={<NewBlog />} />

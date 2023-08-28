@@ -29,7 +29,7 @@ const NewBlogForm = ({
 
 const{category}=useSelector((state)=>state.blog)
 
-// console.log(category);
+console.log(category);
 
   return (
     <Form>
