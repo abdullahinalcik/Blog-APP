@@ -10,7 +10,8 @@ import Register from "../pages/Register";
 
 import PrivateRouter from "./PrivateRouter";
 import Detail from "../pages/Detail";
-import MyBlogs from "../pages/MyBlogs";
+
+import MyBlogs from "../pages/Myblogs";
 
 const AppRouter = () => {
   return (
