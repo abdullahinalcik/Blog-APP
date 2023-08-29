@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import CssBaseline from '@mui/material/CssBaseline';
 
 export const Footer = () => {
   return (
@@ -9,15 +10,18 @@ export const Footer = () => {
       bottom="0"
       sx={{
         width: "100%",
-        height: "50px",
+        // height: "50px",
         backgroundColor: " #1976D2",
         paddingTop: ".5rem",
         paddingBottom: ".5rem",
         marginBottom: "0",
-        marginTop:"1"
+        marginTop:"1",
+        zIndex:2
       }}
     >
       <Container maxWidth="lg">
+{/* //*padding sıfırlama */}
+      <CssBaseline /> 
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
             <Typography color="black" variant="h5" sx={{ color: "white" }}>
